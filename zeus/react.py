@@ -11,7 +11,7 @@ PLUGIN_NAME = "react"
 PLUGIN_DESC = "Reaksiyalar"
 COMMANDS = {'.react': "Tasodifiy reaksiya qo'shadi"}
 
-@events.register(events.NewMessage(pattern=r"\.react (.*)", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.react (.*)", outgoing=True))
 async def react(event):
     if event.fwd_from:
         return

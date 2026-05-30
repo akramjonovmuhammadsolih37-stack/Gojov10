@@ -5,7 +5,7 @@ PLUGIN_NAME = "dump"
 PLUGIN_DESC = "Dump animatsiyasi"
 COMMANDS = {'.dump': 'Dump animatsiyasi'}
 
-@events.register(events.NewMessage(pattern=r"^\.dump ?(.*)", outgoing=True))
+@client.on(events.NewMessage(pattern=r"^\.dump ?(.*)", outgoing=True))
 async def dump(message):
     try:
         obj = message.pattern_match.group(1)

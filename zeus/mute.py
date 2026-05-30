@@ -11,7 +11,7 @@ PLUGIN_NAME = "mute"
 PLUGIN_DESC = "Foydalanuvchini jim qilish"
 COMMANDS = {'.mute <N>m/h/d': 'Foydalanuvchini jim qiladi'}
 
-@events.register(events.NewMessage(pattern=r'\.mute', outgoing=True))
+@client.on(events.NewMessage(pattern=r'\.mute', outgoing=True))
 async def mute(event: events.NewMessage.Event):
     chat = await event.get_chat()
     reply_to_message = await event.get_reply_message()

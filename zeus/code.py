@@ -13,7 +13,7 @@ PLUGIN_NAME = "code"
 PLUGIN_DESC = "Kod formatlash"
 COMMANDS = {'.srgb': "Matnni rangli stikker sifatida yuboradi"}
 
-@events.register(events.NewMessage(pattern=r"\.srgb (.*)", outgoing=True))  # BU YER TUZATILDI
+@client.on(events.NewMessage(pattern=r"\.srgb (.*)", outgoing=True))  # BU YER TUZATILDI
 async def code(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)

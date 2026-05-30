@@ -9,7 +9,7 @@ COMMANDS = {
     '.b64 de': 'Base64 dekodlash (reply xabar)'
 }
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.b64'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.b64'))
 async def runb64(event):
     await event.edit("Kutib turing...")
     await asyncio.sleep(0.5)

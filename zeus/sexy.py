@@ -5,7 +5,7 @@ PLUGIN_NAME = "sexy"
 PLUGIN_DESC = "18+ animatsiya"
 COMMANDS = {'.sexy': '18+ animatsiya'}
 
-@events.register(events.NewMessage(pattern=r"\.sexy", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.sexy", outgoing=True))
 async def sexy(event):
     if event.fwd_from:
         return

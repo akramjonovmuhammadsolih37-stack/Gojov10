@@ -13,7 +13,7 @@ PLUGIN_NAME = "afk"
 PLUGIN_DESC = "AFK rejimi"
 COMMANDS = {'.afkon': 'AFK yoqish', '.afkoff': "AFK o'chirish", '.afkstatus': 'AFK holati'}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.afkon'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.afkon'))
 async def runafkon(event):
     await event.edit("Processing...")
     await asyncio.sleep(2)
@@ -37,7 +37,7 @@ async def runafkon(event):
     except Exception:
         pass
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.afkoff'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.afkoff'))
 async def runafkoff(event):
     await event.edit("Processing...")
     await asyncio.sleep(2)
@@ -56,7 +56,7 @@ async def runafkoff(event):
     except Exception:
         pass
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.afkinfo'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.afkinfo'))
 async def runafkstatus(event):
     await event.edit("Processing...")
     await asyncio.sleep(2)
@@ -74,7 +74,7 @@ async def runafkstatus(event):
     except Exception:
         pass
 
-@events.register(events.NewMessage)
+@client.on(events.NewMessage)
 async def runafk(event):
     if event.is_private:
         getridogramuserdetails = await event.client(GetFullUserRequest("me"))
@@ -126,7 +126,7 @@ async def runafk(event):
         except Exception:
             pass
 
-@events.register(events.NewMessage)
+@client.on(events.NewMessage)
 async def runmcfafk(event):
     checkmention = event.mentioned
     messagelocation = event.to_id

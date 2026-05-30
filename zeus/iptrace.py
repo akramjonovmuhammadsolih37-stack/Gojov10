@@ -7,7 +7,7 @@ PLUGIN_NAME = "iptrace"
 PLUGIN_DESC = "IP tekshirish"
 COMMANDS = {'.iptrace <ip>': 'IP manzilni tekshiradi. Masalan: .iptrace 8.8.8.8'}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.iptrace'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.iptrace'))
 async def iptrace(event):
     getip = event.message.raw_text.split()
     messagelocation = event.to_id

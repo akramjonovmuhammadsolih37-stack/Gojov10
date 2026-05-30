@@ -13,7 +13,7 @@ COMMANDS = {
     '.qrc scan': "QR kodni o'qiydi (reply rasm) — zbar kerak"
 }
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.qrc'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.qrc'))
 async def runqrc(event):
     await event.edit("Processing...")
     await asyncio.sleep(0.5)

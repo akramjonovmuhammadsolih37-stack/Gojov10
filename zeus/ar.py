@@ -10,7 +10,7 @@ PLUGIN_NAME = "ar"
 PLUGIN_DESC = "Rasmni PDF ga aylantirish"
 COMMANDS = {'.itp': "Rasmni PDF ga aylantiradi (reply rasm ustida)"}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.itp'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.itp'))
 async def runar(event):
     await event.edit("Processing...")
     await asyncio.sleep(1)

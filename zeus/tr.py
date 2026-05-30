@@ -24,7 +24,7 @@ async def google_translate(text, dest="en"):
     src_lang = data[2] if len(data) > 2 else "auto"
     return translated, src_lang
 
-@events.register(events.NewMessage(pattern=r"\.tr ?(.*)", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.tr ?(.*)", outgoing=True))
 async def tr(event):
     if event.fwd_from:
         return

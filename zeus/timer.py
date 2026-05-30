@@ -16,7 +16,7 @@ COMMANDS = {
     '.rgm': "O'chirilgan xabarlarni tiklaydi",
 }
 
-@events.register(events.NewMessage(outgoing=True, pattern=r"\.timer"))
+@client.on(events.NewMessage(outgoing=True, pattern=r"\.timer"))
 async def timer(event):
     msg = event.message.raw_text.split()
     if len(msg) < 2:
@@ -39,7 +39,7 @@ async def timer(event):
     await event.delete()
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r"\.numbers"))
+@client.on(events.NewMessage(outgoing=True, pattern=r"\.numbers"))
 async def numbers(event):
     msg = event.message.raw_text.split()
     if len(msg) < 2:
@@ -57,7 +57,7 @@ async def numbers(event):
         t -= 1
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r"\.clocku"))
+@client.on(events.NewMessage(outgoing=True, pattern=r"\.clocku"))
 async def clocku(event):
     from telethon.tl.functions.account import UpdateProfileRequest
     msg = event.message.raw_text.split()
@@ -79,7 +79,7 @@ async def clocku(event):
     await client(UpdateProfileRequest(last_name=""))
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r"\.aboutclock"))
+@client.on(events.NewMessage(outgoing=True, pattern=r"\.aboutclock"))
 async def aboutclock(event):
     from telethon.tl.functions.account import UpdateProfileRequest
     msg = event.message.raw_text.split()
@@ -101,7 +101,7 @@ async def aboutclock(event):
     await client(UpdateProfileRequest(about=""))
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.sda'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.sda'))
 async def runsda(event):
     await event.edit("Qidirilmoqda...")
     await asyncio.sleep(1)
@@ -117,7 +117,7 @@ async def runsda(event):
         await event.client.send_message(messagelocation, f"**Xatolik:** `{e}`")
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.rda'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.rda'))
 async def runrda(event):
     await event.edit("Kutilmoqda...")
     await asyncio.sleep(1)
@@ -137,7 +137,7 @@ async def runrda(event):
         await event.client.send_message(messagelocation, f"**Xatolik:** `{e}`")
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.rcd'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.rcd'))
 async def rundrc(event):
     await event.delete()
     try:
@@ -154,7 +154,7 @@ async def rundrc(event):
         await event.client.send_message(event.to_id, f"**Xatolik:** `{e}`")
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.rts'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.rts'))
 async def runrts(event):
     await event.delete()
     try:
@@ -167,7 +167,7 @@ async def runrts(event):
         await event.client.send_message(event.to_id, f"**Xatolik:** `{e}`")
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.rgm'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.rgm'))
 async def runrgm(event):
     await event.edit("Qayta tiklanish...")
     await asyncio.sleep(1)

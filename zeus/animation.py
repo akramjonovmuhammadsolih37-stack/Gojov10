@@ -10,7 +10,7 @@ PLUGIN_NAME = "animation"
 PLUGIN_DESC = "Animatsiyalar 1"
 COMMANDS = {'.lul': 'Lul', '.snake': 'Ilon', '.clock': 'Soat', '.moon': 'Oy', '.heart': 'Yurak', '.gym': 'Sport', '.earth': 'Yer', '.candy': 'Shakar', '.clown': 'Masxaraboz'}
 
-@events.register(events.NewMessage(pattern=r"\.lul$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.lul$", outgoing=True))
 async def lul(event):
     if event.fwd_from:
         return
@@ -20,7 +20,7 @@ async def lul(event):
         await event.edit("".join(deq))
         deq.rotate(1)
 
-@events.register(events.NewMessage(pattern=r"\.snake", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.snake", outgoing=True))
 async def snake(event):
     if event.fwd_from:
         return
@@ -60,7 +60,7 @@ async def snake(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 27])
 
-@events.register(events.NewMessage(pattern=r"\.nothappy$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.nothappy$", outgoing=True))
 async def nothappy(event):
     if event.fwd_from:
         return
@@ -71,7 +71,7 @@ async def nothappy(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r"\.clock$"))
+@client.on(events.NewMessage(outgoing=True, pattern=r"\.clock$"))
 async def clock(event):
     if event.fwd_from:
         return
@@ -82,7 +82,7 @@ async def clock(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.muah$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.muah$", outgoing=True))
 async def muah(event):
     if event.fwd_from:
         return
@@ -93,7 +93,7 @@ async def muah(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.heart$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.heart$", outgoing=True))
 async def heart(event):
     if event.fwd_from:
         return
@@ -104,7 +104,7 @@ async def heart(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.gym$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.gym$", outgoing=True))
 async def gym(event):
     if event.fwd_from:
         return
@@ -115,7 +115,7 @@ async def gym(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.earth$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.earth$", outgoing=True))
 async def earth(event):
     if event.fwd_from:
         return
@@ -126,7 +126,7 @@ async def earth(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r"\.moon$"))
+@client.on(events.NewMessage(outgoing=True, pattern=r"\.moon$"))
 async def moon(event):
     if event.fwd_from:
         return
@@ -137,7 +137,7 @@ async def moon(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.candy$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.candy$", outgoing=True))
 async def candy(event):
     if event.fwd_from:
         return
@@ -148,7 +148,7 @@ async def candy(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.smoon$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.smoon$", outgoing=True))
 async def smoon(event):
     if event.fwd_from:
         return
@@ -170,7 +170,7 @@ async def smoon(event):
         await event.edit(animation_chars[i % 8])
 
 
-@events.register(events.NewMessage(pattern=r"\.tmoon$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.tmoon$", outgoing=True))
 async def tmoon(event):
     if event.fwd_from:
         return
@@ -216,7 +216,7 @@ async def tmoon(event):
         await event.edit(animation_chars[i % 32])
 
 
-@events.register(events.NewMessage(pattern=r"\.clown$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.clown$", outgoing=True))
 async def clown(event):
     if event.fwd_from:
         return

@@ -10,7 +10,7 @@ PLUGIN_NAME = "smsbomb"
 PLUGIN_DESC = "Matnni ovozga aylantirish (TTS)"
 COMMANDS = {'.tts <til>': "Matnni ovozga aylantiradi (reply xabardan)"}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.tts'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.tts'))
 async def runj(event):
     await event.delete()
     language = event.message.raw_text.split()

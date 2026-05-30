@@ -8,7 +8,7 @@ PLUGIN_NAME = "type"
 PLUGIN_DESC = "Yozish animatsiyasi"
 COMMANDS = {'.type <matn>': 'Matnni bosma mashinkada yozadi'}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.type'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.type'))
 async def type_anim(event):
     if ".type " in event.raw_text:
         orig_text = event.raw_text.split(".type ", maxsplit=1)[1]

@@ -6,7 +6,7 @@ PLUGIN_NAME = "rev"
 PLUGIN_DESC = "Matnni teskari qilish"
 COMMANDS = {'.rev': 'Reply xabarni teskari qiladi'}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.rev'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.rev'))
 async def rev(event):
     if not event.is_reply:
         await event.edit("**Reply xabar ustida ishlating!**")

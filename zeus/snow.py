@@ -9,7 +9,7 @@ PLUGIN_NAME = "snow"
 PLUGIN_DESC = "Qor animatsiyasi"
 COMMANDS = {'.snow': "Qor yog'ish animatsiyasi"}
 
-@events.register(events.NewMessage(pattern=r"\.snow", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.snow", outgoing=True))
 async def snow(message):
 	if message.fwd_from:
 		return

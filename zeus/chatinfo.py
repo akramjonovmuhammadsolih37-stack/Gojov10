@@ -19,7 +19,7 @@ PLUGIN_NAME = "chatinfo"
 PLUGIN_DESC = "Chat ma'lumotlari"
 COMMANDS = {'.info': "Chat yoki kanal haqida ma'lumot"}
 
-@events.register(events.NewMessage(pattern=r"\.chatinfo(?: |$)(.*)", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.chatinfo(?: |$)(.*)", outgoing=True))
 async def info(event):
     
     await event.edit("`Chat scanerlanmoqda...`")

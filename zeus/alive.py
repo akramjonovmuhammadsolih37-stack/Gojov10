@@ -10,7 +10,7 @@ PLUGIN_NAME = "alive"
 PLUGIN_DESC = "Botning ishlash holatini ko'rsatadi"
 COMMANDS = {'.alive': "Bot haqida ma'lumot"}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.alive'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.alive'))
 async def alive(event):
     me = await client.get_me()
     username = me.username or str(me.id)

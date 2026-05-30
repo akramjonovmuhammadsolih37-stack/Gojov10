@@ -9,7 +9,7 @@ PLUGIN_NAME = "spam"
 PLUGIN_DESC = "Xabar spami"
 COMMANDS = {'.spam <delay> <count> <xabar>': 'Xabarni takrorlaydi'}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r"\.spam ?(.*)"))
+@client.on(events.NewMessage(outgoing=True, pattern=r"\.spam ?(.*)"))
 async def delayspam(e):
     try:
         args = e.text.split(" ", 3)

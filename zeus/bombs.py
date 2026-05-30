@@ -8,7 +8,7 @@ PLUGIN_NAME = "bombs"
 PLUGIN_DESC = "Animatsiya bombasi"
 COMMANDS = {'.bombs': 'Bomba animatsiyasi'}
 
-@events.register(events.NewMessage(pattern=r"\.bombs$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.bombs$", outgoing=True))
 async def bombs(event):
     if event.fwd_from:
         return

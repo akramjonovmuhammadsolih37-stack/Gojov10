@@ -4,7 +4,7 @@ import zeus.client
 client = zeus.client.client
 
 
-@events.register(events.NewMessage(pattern=r"\.ascii", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.ascii", outgoing=True))
 async def ascii(event):
     if not event.reply_to_msg_id:
         return await event.edit("Reply to any user message.😒🤐")

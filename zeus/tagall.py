@@ -8,7 +8,7 @@ PLUGIN_NAME = "tagall"
 PLUGIN_DESC = "Hammani tag qilish"
 COMMANDS = {'.tagall': "Guruh a'zolarini tag qiladi"}
 
-@events.register(events.NewMessage(pattern=r"\.tagall", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.tagall", outgoing=True))
 async def tagall(event):
     if event.fwd_from:
         return

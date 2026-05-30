@@ -10,7 +10,7 @@ PLUGIN_NAME = "userinfo"
 PLUGIN_DESC = "Foydalanuvchi ma'lumotlari"
 COMMANDS = {'.userinfo': "Foydalanuvchi haqida ma'lumot"}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.userinfo'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.userinfo'))
 async def userinfo(event):
     await event.delete()
     try:

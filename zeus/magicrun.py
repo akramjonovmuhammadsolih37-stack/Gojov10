@@ -6,7 +6,7 @@ import asyncio
 magic = Magic()
 client = zeus.client.client
 
-@events.register(events.NewMessage(outgoing=True))
+@client.on(events.NewMessage(outgoing=True))
 async def magicrun(event):
     if '.magic' in event.raw_text:
         await asyncio.sleep(0.3)

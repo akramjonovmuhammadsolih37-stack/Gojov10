@@ -8,7 +8,7 @@ PLUGIN_NAME = "animation2"
 PLUGIN_DESC = "Animatsiyalar 2"
 COMMANDS = {'.star': 'Yulduz', '.rain': "Yomg'ir", '.police': 'Politsiya', '.plane': 'Samolyot', '.solarsystem': 'Quyosh tizimi'}
 
-@events.register(events.NewMessage(pattern=r"\.butterfly", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.butterfly", outgoing=True))
 async def star(event):
     if event.fwd_from:
         return
@@ -19,7 +19,7 @@ async def star(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.boxs", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.boxs", outgoing=True))
 async def boxs(event):
     if event.fwd_from:
         return
@@ -30,7 +30,7 @@ async def boxs(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.rain", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.rain", outgoing=True))
 async def rain(event):
     if event.fwd_from:
         return
@@ -41,7 +41,7 @@ async def rain(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.clol", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.clol", outgoing=True))
 async def clol(event):
     if event.fwd_from:
         return
@@ -52,7 +52,7 @@ async def clol(event):
         deq.rotate(1)
 
 
-@events.register(events.NewMessage(pattern=r"\.odra", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.odra", outgoing=True))
 async def odra(event):
     if event.fwd_from:
         return
@@ -64,7 +64,7 @@ async def odra(event):
 
 
 
-@events.register(events.NewMessage(pattern=r"\.fleaveme", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.fleaveme", outgoing=True))
 async def fleaveme(event):
     animation_interval = 1
     animation_ttl = range(0, 10)
@@ -89,7 +89,7 @@ async def fleaveme(event):
         await event.edit(animation_chars[i % 10])
 
 
-@events.register(events.NewMessage(pattern=r"\.loveu", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.loveu", outgoing=True))
 async def loveu(event):
     if event.fwd_from:
         return
@@ -138,7 +138,7 @@ async def loveu(event):
         await event.edit(animation_chars[i % 35])
 
 
-@events.register(events.NewMessage(pattern=r"\.plane", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.plane", outgoing=True))
 async def plane(event):
     if event.fwd_from:
         retun
@@ -160,7 +160,7 @@ async def plane(event):
     await event.delete()
 
 
-@events.register(events.NewMessage(pattern=r"\.police", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.police", outgoing=True))
 async def police(event):
     if event.fwd_from:
         return
@@ -186,7 +186,7 @@ async def police(event):
         await event.edit(animation_chars[i % 12])
 
 
-@events.register(events.NewMessage(pattern=r"\.jio", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.jio", outgoing=True))
 async def jio(event):
     if event.fwd_from:
         return
@@ -219,7 +219,7 @@ async def jio(event):
         await event.edit(animation_chars[i % 19])
 
 
-@events.register(events.NewMessage(pattern=r"\.solarsystem", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.solarsystem", outgoing=True))
 async def solarsystem(event):
     if event.fwd_from:
         return

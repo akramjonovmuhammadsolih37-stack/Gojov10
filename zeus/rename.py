@@ -8,7 +8,7 @@ PLUGIN_NAME = "rename"
 PLUGIN_DESC = "Ism o'zgartirish"
 COMMANDS = {'.rename <ism>//[familiya]': "Profilingiz ismini o'zgartiradi. Masalan: .rename Gojo//Satoru"}
 
-@events.register(events.NewMessage(pattern=r"\.rename (.*)", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.rename (.*)", outgoing=True))
 async def rename(event):
     names = event.pattern_match.group(1).strip()
     if not names:

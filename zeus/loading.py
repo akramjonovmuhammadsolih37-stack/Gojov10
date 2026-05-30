@@ -8,7 +8,7 @@ PLUGIN_NAME = "loading"
 PLUGIN_DESC = "Yuklanish animatsiyasi"
 COMMANDS = {'.loading': 'Loading animatsiyasi'}
 
-@events.register(events.NewMessage(pattern=r"\.loading$", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.loading$", outgoing=True))
 async def loading(event: events.NewMessage.Event):
     try:
         percentage = 0

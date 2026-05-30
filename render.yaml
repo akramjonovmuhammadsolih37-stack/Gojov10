@@ -1,9 +1,9 @@
 services:
-  - type: web
+  - type: worker
     name: gojo-userbot
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python -u main.py
+    startCommand: python main.py
     envVars:
       - key: API_ID
         sync: false
@@ -11,7 +11,9 @@ services:
         sync: false
       - key: SESSION_STRING
         sync: false
+      - key: BOT_TOKEN
+        sync: false
       - key: BOT_NAME
         sync: false
-      - key: PYTHONUNBUFFERED
-        value: "1"
+      - key: BOT_CHANNEL
+        sync: false

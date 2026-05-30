@@ -8,7 +8,7 @@ import asyncio
 client = zeus.client.client
 
 
-@events.register(events.NewMessage(pattern=r"\.emoji(?: |$)(.*)", outgoing=True))
+@client.on(events.NewMessage(pattern=r"\.emoji(?: |$)(.*)", outgoing=True))
 async def itachi(event):
     args = event.pattern_match.group(1)
     if not args:

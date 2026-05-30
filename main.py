@@ -26,22 +26,18 @@ for filepath in plugin_files:
     module_name = f"zeus.{filename[:-3]}"
     try:
         module = importlib.import_module(module_name)
-        count = 0
-        for attr_name in vars(module):
-            obj = getattr(module, attr_name)
-            if callable(obj) and hasattr(obj, "_events"):
-                for ev in obj._events:
-                    client.add_event_handler(obj, ev)
-                    count += 1
+        # @client.on() handlers register automatically on import
+        handlers = len(client.list_event_handlers())
         loaded.append(filename)
-        print(f"[OK] {filename} ({count} handler)")
+        print(f"[OK] {filename}")
     except Exception as e:
         import traceback
         failed.append(filename)
         print(f"[XATO] {filename}: {e}")
         traceback.print_exc()
 
-print(f"\n[INFO] {len(loaded)} plugin, {len(failed)} xato")
+print(f"\n[INFO] {len(loaded)} plugin yuklandi, {len(failed)} xato")
+print(f"[INFO] Jami handlers: {len(client.list_event_handlers())}")
 print("[OK] GOJO tayyor!\n")
 
 async def startup_animation():

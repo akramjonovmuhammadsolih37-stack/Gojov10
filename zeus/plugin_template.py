@@ -28,13 +28,13 @@ COMMANDS = {
 # ─────────────────────────────────────────────────────────────────────
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r"\.salom"))
+@client.on(events.NewMessage(outgoing=True, pattern=r"\.salom"))
 async def salom_handler(event):
     """Misol handler — .salom buyrug'iga javob beradi"""
     await event.edit("👋 Salom, dunyo!")
 
 
 # ── Agar bir nechta handler bo'lsa, hammasi shu yerda ────────────────
-# @events.register(events.NewMessage(outgoing=True, pattern=r"\.boshqa"))
+# @client.on(events.NewMessage(outgoing=True, pattern=r"\.boshqa"))
 # async def boshqa_handler(event):
 #     await event.edit("Bu boshqa buyruq!")

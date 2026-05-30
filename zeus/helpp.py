@@ -130,7 +130,7 @@ def _build_plugin_help(plugins: dict, query: str) -> str:
     return "\n".join(lines)
 
 
-@events.register(events.NewMessage(outgoing=True, pattern=r"\.help ?(.*)"))
+@client.on(events.NewMessage(outgoing=True, pattern=r"\.help ?(.*)"))
 async def help_handler(event):
     await event.edit("`⏳ Yuklanmoqda...`")
     plugins = _load_plugins()

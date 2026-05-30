@@ -10,7 +10,7 @@ PLUGIN_NAME = "url"
 PLUGIN_DESC = "Vaqtni ko'rsatish (.wc)"
 COMMANDS = {'.wc show <timezone>': "Vaqtni ko'rsatadi (masalan: .wc show Asia/Tashkent)"}
 
-@events.register(events.NewMessage(outgoing=True, pattern=r'\.wc'))
+@client.on(events.NewMessage(outgoing=True, pattern=r'\.wc'))
 async def runus(event):
     await event.edit("Checking...")
     await asyncio.sleep(1)
