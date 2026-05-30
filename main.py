@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import sys, os, importlib, glob, asyncio
+import sys; sys.stdout.reconfigure(line_buffering=True)
 
 try:
     from keep_alive import keep_alive
