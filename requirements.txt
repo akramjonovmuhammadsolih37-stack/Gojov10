@@ -1,0 +1,12 @@
+telethon
+flask
+flask-cors
+flask-sock
+emoji
+python-dotenv
+gtts
+requests
+aiohttp
+qrcode[pil]
+Pillow
+pytz
