@@ -9,14 +9,8 @@ try:
 except Exception as e:
     print(f"[INFO] Keep-alive: {e}")
 
-from telethon import TelegramClient, events
-from telethon.sessions import StringSession
-
-API_ID = int(os.environ.get("API_ID", "0"))
-API_HASH = os.environ.get("API_HASH", "")
-SESSION = os.environ.get("SESSION_STRING", "")
-
-client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
+import zeus.client
+client = zeus.client.client
 
 SKIP_FILES = {"client.py", "__init__.py", "magic.py", "emojify.py"}
 base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -31,11 +25,7 @@ for filepath in plugin_files:
         continue
     module_name = f"zeus.{filename[:-3]}"
     try:
-        spec = importlib.util.spec_from_file_location(module_name, filepath)
-        module = importlib.util.module_from_spec(spec)
-        module.client = client
-        sys.modules[module_name] = module
-        spec.loader.exec_module(module)
+        module = importlib.import_module(module_name)
         count = 0
         for attr_name in vars(module):
             obj = getattr(module, attr_name)
