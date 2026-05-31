@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>GOJO — Session Setup</title>
+<style>
+:root{--bg:#05080f;--card:#0d1424;--border:#1a2640;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;--text:#e2e8f0;--sub:#4a6080;--mono:'JetBrains Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:center;padding:16px}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.03) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+.box{width:100%;max-width:420px;position:relative;z-index:1}
+.logo{text-align:center;margin-bottom:28px}
+.icon{width:64px;height:64px;margin:0 auto 12px;background:linear-gradient(135deg,#0d2045,#1a3a6e);border-radius:18px;border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 0 36px rgba(59,130,246,.18)}
+h1{font-size:26px;font-weight:800;letter-spacing:-1px}
+h1 span{color:var(--blue)}
+.sub{color:var(--sub);font-size:11px;letter-spacing:3px;margin-top:4px;font-family:var(--mono)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+.step{display:none}.step.active{display:block}
+.label{font-size:13px;color:var(--sub);margin-bottom:6px;font-family:var(--mono)}
+.inp{width:100%;padding:13px 14px;background:#08111f;border:1.5px solid var(--border);border-radius:11px;color:var(--text);font-size:14px;font-family:var(--mono);outline:none;transition:border .2s;margin-bottom:12px}
+.inp:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+.inp::placeholder{color:var(--sub)}
+.btn{width:100%;padding:14px;border-radius:11px;border:none;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;font-weight:700;font-size:14px;letter-spacing:1px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(59,130,246,.35)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.alert{padding:10px 14px;border-radius:10px;font-size:13px;font-family:var(--mono);margin-bottom:14px;display:none}
+.alert.err{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:var(--red)}
+.alert.suc{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:var(--green)}
+.alert.warn{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:var(--yellow)}
+.alert.show{display:block}
+.result-box{background:#08111f;border:1px solid var(--border);border-radius:11px;padding:14px;margin:14px 0;font-family:var(--mono);font-size:11px;word-break:break-all;color:var(--green);line-height:1.6}
+.copy-btn{width:100%;padding:12px;border-radius:11px;border:1px solid rgba(16,185,129,.3);background:rgba(16,185,129,.08);color:var(--green);font-weight:700;font-size:13px;cursor:pointer;margin-bottom:8px;transition:all .2s}
+.copy-btn:hover{background:rgba(16,185,129,.15)}
+.step-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.badge{padding:3px 10px;border-radius:20px;font-size:11px;background:rgba(59,130,246,.15);color:var(--blue);border:1px solid rgba(59,130,246,.3);font-family:var(--mono)}
+.hint{font-size:12px;color:var(--sub);margin-top:-8px;margin-bottom:12px;line-height:1.5}
+a{color:var(--blue);text-decoration:none}
+.spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card{animation:fadeUp .4s ease}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="logo">
+    <div class="icon">🥷</div>
+    <h1>GOJO <span>Setup</span></h1>
+    <p class="sub">SESSION STRING OLISH</p>
+  </div>
+
+  <div class="card">
+    <!-- STEP 1: API ma'lumotlar -->
+    <div class="step active" id="step1">
+      <div class="step-title">
+        <span class="badge">1/3</span>
+        API Ma'lumotlar
+      </div>
+      <div id="err1" class="alert err"></div>
+      <div class="label">API ID</div>
+      <input class="inp" id="api_id" type="number" placeholder="12345678"/>
+      <div class="hint">📌 <a href="https://my.telegram.org" target="_blank">my.telegram.org</a> dan oling</div>
+      <div class="label">API HASH</div>
+      <input class="inp" id="api_hash" placeholder="0a1b2c3d4e5f..."/>
+      <div class="label">Telefon raqam</div>
+      <input class="inp" id="phone" placeholder="+998901234567"/>
+      <div class="hint">📱 Telegram ga ulangan raqam, + bilan boshlang</div>
+      <button class="btn" id="btn1" onclick="sendCode()">
+        <span class="btn-text">Kod yuborish →</span>
+      </button>
+    </div>
+
+    <!-- STEP 2: Kod va 2FA -->
+    <div class="step" id="step2">
+      <div class="step-title">
+        <span class="badge">2/3</span>
+        Telegram Kodi
+      </div>
+      <div id="err2" class="alert err"></div>
+      <div id="info2" class="alert warn show">📱 Telegramga 5 xonali kod yuborildi</div>
+      <div class="label">Telegram kodi</div>
+      <input class="inp" id="code" placeholder="12345" maxlength="5"/>
+      <div id="tfa_block" style="display:none">
+        <div class="label">2FA Parol</div>
+        <input class="inp" id="password" type="password" placeholder="Ikki bosqichli himoya paroli"/>
+      </div>
+      <button class="btn" id="btn2" onclick="verifyCode()">
+        <span class="btn-text">Tasdiqlash →</span>
+      </button>
+      <button style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--sub);cursor:pointer;margin-top:8px;font-size:13px" onclick="goBack()">← Orqaga</button>
+    </div>
+
+    <!-- STEP 3: Session string -->
+    <div class="step" id="step3">
+      <div class="step-title">
+        <span class="badge">3/3</span>
+        ✅ Muvaffaqiyatli!
+      </div>
+      <div class="alert suc show">Session string muvaffaqiyatli olindi!</div>
+      <div class="label">SESSION_STRING (Render Environment ga qo'shing)</div>
+      <div class="result-box" id="session_result"></div>
+      <button class="copy-btn" onclick="copySession()">📋 Nusxalash</button>
+      <div style="font-size:12px;color:var(--sub);text-align:center;line-height:1.7">
+        Bu stringni <strong style="color:var(--text)">SESSION_STRING</strong> nomi bilan<br/>
+        Render → Environment Variables ga qo'shing
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let _setup_id = '';
+let _session_str = '';
+
+function showErr(id, msg){ const el=document.getElementById(id); el.textContent=msg; el.classList.add('show'); }
+function hideErr(id){ document.getElementById(id).classList.remove('show'); }
+function setLoading(btn, loading){
+  const b=document.getElementById(btn);
+  if(loading){ b.disabled=true; b.innerHTML='<div class="spin"></div>'; }
+  else{ b.disabled=false; b.innerHTML=b.dataset.orig||'<span class="btn-text">→</span>'; }
+}
+function goStep(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+}
+function goBack(){ goStep(1); }
+
+async function sendCode(){
+  hideErr('err1');
+  const api_id=document.getElementById('api_id').value.trim();
+  const api_hash=document.getElementById('api_hash').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  if(!api_id||!api_hash||!phone){ showErr('err1','Barcha maydonlarni to\'ldiring'); return; }
+  const btn=document.getElementById('btn1');
+  btn.dataset.orig=btn.innerHTML;
+  setLoading('btn1',true);
+  try{
+    const r=await fetch('/api/setup/send_code',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({api_id:parseInt(api_id),api_hash,phone})});
+    const d=await r.json();
+    if(d.success){ _setup_id=d.setup_id; goStep(2); }
+    else{ showErr('err1',d.error||'Xato yuz berdi'); }
+  }catch(e){ showErr('err1','Server bilan bog\'lanib bo\'lmadi'); }
+  finally{ setLoading('btn1',false); }
+}
+
+async function verifyCode(){
+  hideErr('err2');
+  const code=document.getElementById('code').value.trim();
+  const password=document.getElementById('password').value;
+  if(!code){ showErr('err2','Kodni kiriting'); return; }
+  const btn=document.getElementById('btn2');
+  btn.dataset.orig=btn.innerHTML;
+  setLoading('btn2',true);
+  try{
+    const r=await fetch('/api/setup/verify_code',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({setup_id:_setup_id,code,password})});
+    const d=await r.json();
+    if(d.success){
+      _session_str=d.session_string;
+      document.getElementById('session_result').textContent=_session_str;
+      goStep(3);
+    } else if(d.needs_2fa){
+      document.getElementById('tfa_block').style.display='block';
+      showErr('err2','2FA parolini kiriting');
+    } else {
+      showErr('err2',d.error||'Xato yuz berdi');
+    }
+  }catch(e){ showErr('err2','Server bilan bog\'lanib bo\'lmadi'); }
+  finally{ setLoading('btn2',false); }
+}
+
+function copySession(){
+  navigator.clipboard.writeText(_session_str).then(()=>{
+    const b=document.querySelector('.copy-btn');
+    b.textContent='✅ Nusxalandi!';
+    setTimeout(()=>b.textContent='📋 Nusxalash',2000);
+  });
+}
+</script>
+</body>
+</html>
