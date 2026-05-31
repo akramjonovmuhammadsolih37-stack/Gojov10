@@ -594,7 +594,7 @@ async function api(method, path, body, noAuth) {
 }
 
 // ── Toast xabari ────────────────────────────────
-function toast(msg, type = 'info') {
+function $(id) { return document.getElementById(id); }function toast(msg, type = 'info') {
   const t = $('toast');
   if (!t) return;
   t.className = 'show ' + type;
