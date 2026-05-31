@@ -592,6 +592,8 @@ async function api(method, path, body, noAuth) {
     });
     return await r.json();
   } catch (e) {
+    console.error('API xato:', e);
+    alert('Xato: ' + e.message);
     return null;
   }
 }
