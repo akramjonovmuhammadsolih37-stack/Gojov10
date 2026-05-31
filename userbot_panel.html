@@ -559,6 +559,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background-image:linear
 <div id="toast"></div>
 
 <script>
+function $(id) { return document.getElementById(id); }
+
+
 // ══════════════════════════════════════════════════
 //  GOJO-USERBOT PANEL — JavaScript
 // ══════════════════════════════════════════════════
@@ -594,7 +597,7 @@ async function api(method, path, body, noAuth) {
 }
 
 // ── Toast xabari ────────────────────────────────
-function $(id) { return document.getElementById(id); }function toast(msg, type = 'info') {
+function toast(msg, type = 'info') {
   const t = $('toast');
   if (!t) return;
   t.className = 'show ' + type;
