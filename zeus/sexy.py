@@ -1,5 +1,7 @@
 from telethon import TelegramClient, events
 import asyncio
+import zeus.client
+client = zeus.client.client
 
 PLUGIN_NAME = "sexy"
 PLUGIN_DESC = "18+ animatsiya"

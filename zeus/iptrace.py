@@ -2,6 +2,8 @@ from telethon import events
 import asyncio
 import aiohttp
 import json
+import zeus.client
+client = zeus.client.client
 
 PLUGIN_NAME = "iptrace"
 PLUGIN_DESC = "IP tekshirish"

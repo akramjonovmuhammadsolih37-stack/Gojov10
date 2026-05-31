@@ -1,6 +1,8 @@
 from telethon import TelegramClient, events
 import base64
 import asyncio
+import zeus.client
+client = zeus.client.client
 
 PLUGIN_NAME = "base64"
 PLUGIN_DESC = "Base64 kodlash/dekodlash"

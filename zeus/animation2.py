@@ -1,6 +1,8 @@
 import asyncio
 from collections import deque
 from telethon import TelegramClient, events
+import zeus.client
+client = zeus.client.client
 
 
 

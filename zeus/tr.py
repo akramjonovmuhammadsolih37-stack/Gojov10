@@ -2,6 +2,8 @@ import asyncio
 from telethon import events
 import aiohttp
 import json
+import zeus.client
+client = zeus.client.client
 
 PLUGIN_NAME = "tr"
 PLUGIN_DESC = "Tarjima (Google Translate)"

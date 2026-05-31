@@ -5,6 +5,8 @@
 from telethon import events
 import random
 import asyncio
+import zeus.client
+client = zeus.client.client
 
 
 PLUGIN_NAME = "react"

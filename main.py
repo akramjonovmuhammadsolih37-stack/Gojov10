@@ -48,9 +48,15 @@ async def startup_animation():
     msg = await client.send_message("me", "⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛\n`Yuklanmoqda...`")
     for frame in frames:
         await asyncio.sleep(0.35)
-        await msg.edit(f"{frame}\n`Yuklanmoqda...`")
+        try:
+            await msg.edit(f"{frame}\n`Yuklanmoqda...`")
+        except Exception:
+            pass
     for neon in ["⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️","✨🌟✨🌟✨🌟✨🌟✨🌟","💎💠💎💠💎💠💎💠💎💠"]:
-        await msg.edit(neon)
+        try:
+            await msg.edit(neon)
+        except Exception:
+            pass
         await asyncio.sleep(0.3)
     await msg.edit(
         f"✅ **{bot_name}** ishga tushdi!\n\n"
